@@ -1,5 +1,4 @@
 
-import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Toggle from '../atomos/Toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,26 +7,26 @@ import Image from '../atomos/Logo';
 import ImagenesConfi from './ImagenesConfi';
 import TituloSoporte from '../moleculas/TituloSoporte';
 import Icon from '../atomos/Iconos';
-import SelectIdioma from '../moleculas/SelectIdioma';
 import SpanSoporte from '../atomos/Span';
 import BotonesModal from '../atomos/BotonesModal';
 import DivRecuperarCont from '../moleculas/divRecuperarCont';
 import DivLorem from '../atomos/divlorem';
+import SelectIdioma from '../moleculas/SelectIdioma';
 
+
+
+import React, { useState } from 'react';
 
 
 function Soporte() {
+ 
+
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
-  const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('es');
   const [primerModalAbierto, setPrimerModalAbierto] = useState(false);
   const [segundoModalAbierto, setSegundoModalAbierto] = useState(false);
 
   const toggleNotificaciones = () => {
     setNotificacionesActivadas(!notificacionesActivadas);
-  };
-
-  const handleIdiomaChange = (event) => {
-    setIdiomaSeleccionado(event.target.value);
   };
 
   const abrirPrimerModal = () => {
@@ -46,14 +45,9 @@ function Soporte() {
     setSegundoModalAbierto(false);
   };
 
-
-
-  
-  
   return (
     <div className='container'>
-
-      <ImagenesConfi />
+       <ImagenesConfi />
       <TituloSoporte />
       <div className="d-flex justify-content-center">
         <div className="col-md-6">
@@ -66,7 +60,6 @@ function Soporte() {
 
           <div className="g-4 d-flex justify-content-center">
             <SpanSoporte>Idioma:</SpanSoporte>
-            <SelectIdioma />
             <SpanSoporte>Notificaciones:</SpanSoporte>
             <Toggle
               onChange={toggleNotificaciones}
@@ -74,6 +67,8 @@ function Soporte() {
               onColor="#008000"
               offColor="#BEC3C7"
             />
+          <SpanSoporte>Idioma:</SpanSoporte>
+          <SelectIdioma/>
           </div>
 
 

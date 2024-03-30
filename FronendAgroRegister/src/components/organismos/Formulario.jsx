@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../atomos/Inputs.jsx';
+import Select from '../atomos/Select.jsx';
 import Botones from '../atomos/Botones.jsx';
 
 const Formulario = ({ campos, onSubmit, className }) => {
@@ -14,7 +15,7 @@ const Formulario = ({ campos, onSubmit, className }) => {
     e.preventDefault();
     onSubmit(values);
   };
- 
+
   return (
     <form className={className} onSubmit={handleSubmit}>
       {campos.map((campo, index) => (
@@ -25,8 +26,16 @@ const Formulario = ({ campos, onSubmit, className }) => {
             value={values[campo.name]?.value || ''}
             onChange={(e) => handleChange(e, campo.name)}
             placeholder={campo.placeholder}
-            options={campo.options}
           />
+          {campo.options && campo.options.length > 0 && (
+            <Select
+              name={campo.name}
+              value={values[campo.name]?.value || ''}
+              onChange={(e) => handleChange(e, campo.name)}
+              placeholder={campo.placeholder}
+              options={campo.options}
+            />
+          )}
         </div>
       ))}
       <Botones className='text-white bg-success' variant="primary" onClick={handleSubmit}>Login</Botones>

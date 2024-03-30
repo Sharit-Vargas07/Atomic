@@ -24,4 +24,4 @@ function SelectIdioma() {
     );
 }
 
-export default SelectIdioma;
+export default SelectIdioma;
