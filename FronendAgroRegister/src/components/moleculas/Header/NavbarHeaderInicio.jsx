@@ -8,7 +8,7 @@ function NavbarHeaderInicio() {
          <nav className="navbar bg-#00800 fixed-top">
     <div className="d-flex container aling-items-start">
       <a className="navbar-brand text-white font-weight-bold fs-4 active" href="#">AGRO-REGISTER</a>
-      <Image/>
+      <Image style={{ width: "70px", height: "50px" }} />
     </div>
   </nav>
     </div>

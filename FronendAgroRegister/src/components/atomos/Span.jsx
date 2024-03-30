@@ -3,7 +3,7 @@ import React, { Children } from 'react'
 function SpanSoporte({children}) {
   return (
     <div>
-         <span className="text-2xl font-weight-bold text-gray-800 mr-2">{children}</span>
+         <span style={{fontSize: '20px'}} className="font-weight-bold text-gray-800 mr-2">{children}</span>
     </div>
   )
 }
