@@ -11,6 +11,8 @@ import Icon from '../atomos/Iconos';
 import SelectIdioma from '../moleculas/SelectIdioma';
 import SpanSoporte from '../atomos/Span';
 import BotonesModal from '../atomos/BotonesModal';
+import DivRecuperarCont from '../moleculas/divRecuperarCont';
+import DivLorem from '../atomos/divlorem';
 
 function Soporte() {
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
@@ -46,7 +48,7 @@ function Soporte() {
     <div className='container'>
       <ImagenesConfi />
       <TituloSoporte />
-      <div className="row justify-content-center">
+      <div className="d-flex justify-content-center">
         <div className="col-md-6">
           <div className="text-center my-4">
             <h2 className="mt-5 text-4xl font-weight-bold mt-4 mb-3">
@@ -55,7 +57,7 @@ function Soporte() {
             </h2>
           </div>
 
-          <div className="d-flex justify-content-center">
+          <div className="g-4 d-flex justify-content-center">
             <SpanSoporte>Idioma:</SpanSoporte>
             <SelectIdioma />
             <SpanSoporte>Notificaciones:</SpanSoporte>
@@ -68,28 +70,22 @@ function Soporte() {
           </div>
 
 
-          <div className="row justify-content-center mt-5">
-            <div className="col-md-5 mb-3" onClick={abrirPrimerModal} style={{ cursor: 'pointer' }}>
-              <div className="card p-4">
-                <h2 className="text-2xl font-weight-bold mb-3">Recuperar contraseña</h2>
-                <FontAwesomeIcon icon={v.iconoCandado} className="text-4xl mb-3" />
-                <p className="text-lg text-gray-800">¿No recuerdas tu contraseña?</p>
-                <p className="text-lg text-gray-800">
-                  <a href="#" className="text-lg text-success" onClick={abrirPrimerModal}>Haz click aquí</a>
-                </p>
-              </div>
-            </div>
-            <div className="col-md-5 mb-3" onClick={abrirPrimerModal} style={{ cursor: 'pointer' }}>
-              <div className="card p-4">
-                <h2 className="text-2xl font-weight-bold mb-3">Documentación</h2>
-                <FontAwesomeIcon icon={v.iconoDocumento} className="text-4xl mb-3" />
-                <p className="text-lg text-gray-800">Descarga nuestra documentación aquí:</p>
-                <p className="text-lg text-gray-800">
-                  <a href="#" className="text-success" onClick={'#'}>Haz click aquí</a>
-                </p>
-              </div>
-            </div>
+          <div className=" d-flex justify-content-center mt-5">
+            <DivRecuperarCont
+              onClick={abrirPrimerModal}
+              title="Recuperar Contraseña"
+              icon={v.iconoCandado}
+              paragraph="¿No recuerdas tu contraseña?"
+              linkText="Haz Click Aquí"
+            />
+            <DivRecuperarCont
+              title="Documentación"
+              icon={v.iconoDocumento}
+              paragraph="Descarga nuestra Documentación aquí:"
+              linkText="Haz Click Aquí"
+            />
           </div>
+
 
           {/* Primer Modal */}
           <Modal show={primerModalAbierto} onHide={cerrarPrimerModal}>
@@ -101,7 +97,7 @@ function Soporte() {
               <input type="text" className="form-control mb-4" />
             </Modal.Body>
             <Modal.Footer>
-            <BotonesModal className='text-white bg-grey' variant="secondary" onClick={cerrarPrimerModal}>Cerrar</BotonesModal>
+              <BotonesModal className='text-white bg-grey' variant="secondary" onClick={cerrarPrimerModal}>Cerrar</BotonesModal>
               <BotonesModal className='text-white bg-success' variant="primary" onClick={abrirSegundoModal}>Siguiente</BotonesModal>
             </Modal.Footer>
           </Modal>
@@ -124,42 +120,23 @@ function Soporte() {
           </Modal>
         </div>
       </div>
-      <div className='bg-gray-200 p-5 mt-5'>
-        <Image />
-        <h1 className='mt-6' style={{ fontSize: '22px' }}>Lorem Ipsum</h1>
-        <div className='mr-120 flex flex-wrap'>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
-          <div className='w-1/3 p-2'>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-            <p>Lorem ipsum</p>
-          </div>
+      <div className='bg-custom p-5 mt-5'>
+        <Image style={{ width: "70px", height: "50px" }} />
+        <SpanSoporte>Lorem ipsum</SpanSoporte>
+        <div className='d-flex justify-content-start'>
+          <DivLorem />
+          <DivLorem />
+          <DivLorem />
+          <DivLorem />
         </div>
       </div>
+      <hr />
+      <div className='d-flex justify-content-center align-items-center mb-3'>
+        <p className="m-0">CopyRight</p>
+        <FontAwesomeIcon icon={v.iconoCopyRight} className="mx-2" />
+        <p className="m-0">2024 ADSO 2692929 todos los Derechos Reservados</p>
+      </div>
+
     </div>
   )
 }
