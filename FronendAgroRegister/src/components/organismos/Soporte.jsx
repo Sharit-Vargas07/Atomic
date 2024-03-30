@@ -14,6 +14,8 @@ import BotonesModal from '../atomos/BotonesModal';
 import DivRecuperarCont from '../moleculas/divRecuperarCont';
 import DivLorem from '../atomos/divlorem';
 
+
+
 function Soporte() {
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
   const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('es');
@@ -44,8 +46,13 @@ function Soporte() {
     setSegundoModalAbierto(false);
   };
 
+
+
+  
+  
   return (
     <div className='container'>
+
       <ImagenesConfi />
       <TituloSoporte />
       <div className="d-flex justify-content-center">

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/organismos/Header/Header';
-import Formulario from './components/organismos/Formulario';
-import { Programacion } from './components/organismos/Tablas';
+import Soporte from './components/organismos/Soporte';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,8 +9,9 @@ function App() {
   return (
     <>
         <Header/>
-        <Formulario/>
-        <Programacion/>
+        <Soporte/>
+
+
     </>
   )
 }

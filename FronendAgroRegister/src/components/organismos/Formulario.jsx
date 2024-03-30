@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import Input from '../atomos/Inputs.jsx';
-import BotonesModal from '../atomos/BotonesModal.jsx';
+import Botones from '../atomos/Botones.jsx';
 
-const Formulario = ({ campo, onSubmit }) => {
+const Formulario = ({ campos, onSubmit, className }) => {
   const [values, setValues] = useState({});
-  
-  const campos = [
-    { name: 'nombre', type: 'text', placeholder: 'Nombre' },
-    { name: 'email', type: 'email', placeholder: 'Email' },
-    { name: 'telefono', type: 'tel', placeholder: 'Teléfono' }
-  ];
-    
 
   const handleChange = (e, campo) => {
     const { name, value } = e.target;
@@ -21,9 +14,9 @@ const Formulario = ({ campo, onSubmit }) => {
     e.preventDefault();
     onSubmit(values);
   };
-
+ 
   return (
-    <form style={{marginTop: '150px'}} onSubmit={handleSubmit}>
+    <form className={className} onSubmit={handleSubmit}>
       {campos.map((campo, index) => (
         <div key={index}>
           <Input
@@ -32,11 +25,11 @@ const Formulario = ({ campo, onSubmit }) => {
             value={values[campo.name]?.value || ''}
             onChange={(e) => handleChange(e, campo.name)}
             placeholder={campo.placeholder}
-            options={campo.options} // Pasar opciones para campos de selección
+            options={campo.options}
           />
         </div>
       ))}
-      <BotonesModal className='text-white bg-success' variant="primary" onClick={handleSubmit}>Login</BotonesModal>
+      <Botones className='text-white bg-success' variant="primary" onClick={handleSubmit}>Login</Botones>
     </form>
   );
 };
