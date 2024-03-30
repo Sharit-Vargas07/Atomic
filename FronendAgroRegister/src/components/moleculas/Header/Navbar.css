@@ -1,0 +1,32 @@
+
+/* Header */
+.navbar {
+    /* background-color: #f5f6f7; */
+    background-color: rgb(0, 141, 0);
+    color: white;
+    height: 100px;
+    align-items: center;
+  }
+  /* Contenido del header */
+  .navbar-collapse {
+    align-items: center;
+    justify-content:  center; /* hace que el contenido de la barra de navegacion se vaya al otro lado */
+    color: white;
+  }
+  /* Color de indicacion Pagina */
+/*   .plus{
+    color: #013601;
+  } */
+  /* Hover del contenido del header */
+  .active:hover{
+    color: #013601 !important;
+  }
+  /* Mediauery */
+  @media screen and (max-width: 767px) {
+    .navbar-brand {
+        display: none;
+    }
+    .nav-item {
+      font-size: 1.1em;
+    }
+  }
