@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/organismos/Header/Header';
-import Soporte from './components/organismos/Soporte';
+import Formulario from './components/organismos/Formulario';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
         <Header/>
-        <Soporte/>
+        <Formulario/>
     </>
   )
 }
