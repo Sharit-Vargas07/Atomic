@@ -1,38 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import ModalBody from '../moleculas/Modal/ModalBody';
 import BotonesModal from '../atomos/BotonesModal';
 
-function ModalRecuperacionContraseña({
-    primerModalAbierto,
-    cerrarPrimerModal,
-    abrirSegundoModal
-  }) {
-    return (
-      <Modal show={primerModalAbierto} onHide={cerrarPrimerModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Recuperación de Contraseña</Modal.Title>
-        </Modal.Header>
-        <ModalBody type="text">Ingrese el código de verificación:</ModalBody>
-        <Modal.Footer>
-          <BotonesModal
-            className='text-white bg-grey'
-            variant="secondary"
-            onClick={cerrarPrimerModal}
-          >
-            Cerrar
-          </BotonesModal>
-          <BotonesModal
-            className='text-white bg-success'
-            variant="primary"
-            onClick={abrirSegundoModal}
-          >
-            Siguiente
-          </BotonesModal>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  
-  export default ModalRecuperacionContraseña;
-  
+function ModalRecuRegeContrasenia({ titulo, mostrar, cerrarModal, onSiguienteClick, children }) {
+  const [siguienteVisible, setSiguienteVisible] = useState(true);
+
+  const handleSiguienteClick = () => {
+    onSiguienteClick();
+    setSiguienteVisible(false);
+  };
+
+  const siguienteTexto = siguienteVisible ? "Siguiente" : "Generar";
+
+  return (
+    <Modal show={mostrar} onHide={cerrarModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>{titulo}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {children}
+      </Modal.Body>
+      <Modal.Footer>
+        <BotonesModal className='text-white bg-grey' variant="secondary" onClick={cerrarModal}>Cerrar</BotonesModal>
+        <BotonesModal className='text-white bg-success' variant="primary" onClick={handleSiguienteClick}>{siguienteTexto}</BotonesModal>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+export default ModalRecuRegeContrasenia;

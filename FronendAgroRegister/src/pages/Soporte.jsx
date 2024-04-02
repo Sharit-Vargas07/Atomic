@@ -1,32 +1,29 @@
-
-import { Modal, Button } from 'react-bootstrap';
-import Toggle from '../atomos/Toggle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import v from '../../styles/variables';
-import Image from '../atomos/Logo';
-import ImagenesConfi from './ImagenesConfi';
-import TituloSoporte from '../moleculas/TituloSoporte';
-import Icon from '../atomos/Iconos';
-import SpanSoporte from '../atomos/Span';
-import BotonesModal from '../atomos/BotonesModal';
-import DivRecuperarCont from '../moleculas/divRecuperarCont';
-import DivLorem from '../atomos/divlorem';
-import SelectIdioma from '../moleculas/SelectIdioma';
-
-
-
 import React, { useState } from 'react';
-
+import Toggle from '../components/atomos/Toggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import v from '../styles/variables';
+import ImagenesConfi from '../components/organismos/ImagenesConfi';
+import TituloSoporte from '../components/moleculas/TituloSoporte';
+import Icon from '../components/atomos/Iconos';
+import SelectIdioma from '../components/moleculas/SelectIdioma';
+import SpanSoporte from '../components/atomos/Span';
+import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
+import ModalRecuRegeContrasenia from '../components/organismos/Modal';
+import DivLorem from '../components/atomos/divlorem';
+import Image from '../components/atomos/Logo'
 
 function Soporte() {
- 
-
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
+  const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('es');
   const [primerModalAbierto, setPrimerModalAbierto] = useState(false);
   const [segundoModalAbierto, setSegundoModalAbierto] = useState(false);
 
   const toggleNotificaciones = () => {
     setNotificacionesActivadas(!notificacionesActivadas);
+  };
+
+  const handleIdiomaChange = (event) => {
+    setIdiomaSeleccionado(event.target.value);
   };
 
   const abrirPrimerModal = () => {
@@ -45,11 +42,16 @@ function Soporte() {
     setSegundoModalAbierto(false);
   };
 
+  const handleSiguienteClick = () => {
+    abrirSegundoModal(); // Abrir el segundo modal al hacer clic en "Siguiente"
+  };
+
   return (
     <div className='container'>
-       <ImagenesConfi />
+      {/* Resto del contenido */}
+      <ImagenesConfi />
       <TituloSoporte />
-      <div className="d-flex justify-content-center">
+      <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="text-center my-4">
             <h2 className="mt-5 text-4xl font-weight-bold mt-4 mb-3">
@@ -58,8 +60,9 @@ function Soporte() {
             </h2>
           </div>
 
-          <div className="g-4 d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <SpanSoporte>Idioma:</SpanSoporte>
+            <SelectIdioma />
             <SpanSoporte>Notificaciones:</SpanSoporte>
             <Toggle
               onChange={toggleNotificaciones}
@@ -67,12 +70,9 @@ function Soporte() {
               onColor="#008000"
               offColor="#BEC3C7"
             />
-          <SpanSoporte>Idioma:</SpanSoporte>
-          <SelectIdioma/>
           </div>
 
-
-          <div className=" d-flex justify-content-center mt-5">
+          <div className="d-flex justify-content-center mt-5">
             <DivRecuperarCont
               onClick={abrirPrimerModal}
               title="Recuperar Contraseña"
@@ -88,38 +88,33 @@ function Soporte() {
             />
           </div>
 
-
           {/* Primer Modal */}
-          <Modal show={primerModalAbierto} onHide={cerrarPrimerModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Recuperación de Contraseña</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p>Ingrese el código de verificación:</p>
-              <input type="text" className="form-control mb-4" />
-            </Modal.Body>
-            <Modal.Footer>
-              <BotonesModal className='text-white bg-grey' variant="secondary" onClick={cerrarPrimerModal}>Cerrar</BotonesModal>
-              <BotonesModal className='text-white bg-success' variant="primary" onClick={abrirSegundoModal}>Siguiente</BotonesModal>
-            </Modal.Footer>
-          </Modal>
+          <ModalRecuRegeContrasenia
+            titulo="Recuperación de Contraseña"
+            mostrar={primerModalAbierto}
+            cerrarModal={cerrarPrimerModal}
+            siguienteVisible={true} // Mostrar el botón "Siguiente"
+            onSiguienteClick={handleSiguienteClick}
+          >
+            <p>Ingrese el código de verificación:</p>
+            <input type="text" className="form-control mb-4" />
+          </ModalRecuRegeContrasenia>
 
           {/* Segundo Modal */}
-          <Modal show={segundoModalAbierto} onHide={cerrarSegundoModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Regenerar Contraseña</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <p>Escribe la nueva contraseña:</p>
-              <input type="password" className="form-control mb-4" />
-              <p>Confirma tu contraseña:</p>
-              <input type="password" className="form-control mb-4" />
-            </Modal.Body>
-            <Modal.Footer>
-              <BotonesModal className='text-white bg-grey' variant="secondary" onClick={cerrarSegundoModal}>Cerrar</BotonesModal>
-              <BotonesModal className='text-white bg-success' variant="primary">Generar</BotonesModal>
-            </Modal.Footer>
-          </Modal>
+          <ModalRecuRegeContrasenia
+            titulo="Regenerar Contraseña"
+            mostrar={segundoModalAbierto}
+            cerrarModal={cerrarSegundoModal}
+            siguienteVisible={false} // Ocultar el botón "Siguiente"
+          >
+            <p>Escribe la nueva contraseña:</p>
+            <input type="password" className="form-control mb-4" />
+            <p>Confirma tu contraseña:</p>
+            <input type="password" className="form-control mb-4" />
+            {/* <BotonesModal className='text-white bg-success' variant="primary">Generar</BotonesModal> */}
+          </ModalRecuRegeContrasenia>
+
+          {/* Resto del contenido */}
         </div>
       </div>
       <div className='bg-custom p-5 mt-5'>
@@ -138,10 +133,8 @@ function Soporte() {
         <FontAwesomeIcon icon={v.iconoCopyRight} className="mx-2" />
         <p className="m-0">2024 ADSO 2692929 todos los Derechos Reservados</p>
       </div>
-
     </div>
-  )
+  );
 }
-
 
 export default Soporte;
