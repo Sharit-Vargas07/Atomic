@@ -10,7 +10,7 @@ function NavbarHeader() {
       {/* Offcanvas transicion */}
         <span className="navbar-toggler-icon fs-3"></span>
       </button>
-      <a className="navbar-brand text-white fs-4 active" href="#">Inicio</a>
+      <a className="navbar-brand text-white fs-4 active" href="/dashboard">Inicio</a>
       <a className="navbar-brand text-white fs-4 active" href="#">Usuarios</a>
       <a className="navbar-brand text-white fs-4 active" href="#">Programar</a>
       <Image style={{ width: "70px", height: "50px" }} />

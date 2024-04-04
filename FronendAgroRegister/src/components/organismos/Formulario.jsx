@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../atomos/Inputs.jsx';
 import Select from '../atomos/Select.jsx';
-import Botones from '../atomos/Botones.jsx';
 
 const Formulario = ({ campos, onSubmit, className }) => {
   const [values, setValues] = useState({});
@@ -38,7 +37,6 @@ const Formulario = ({ campos, onSubmit, className }) => {
           )}
         </div>
       ))}
-      <Botones className='text-white bg-success' variant="primary" onClick={handleSubmit}>Login</Botones>
     </form>
   );
 };

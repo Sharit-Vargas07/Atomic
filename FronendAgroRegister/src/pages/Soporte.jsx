@@ -10,7 +10,8 @@ import SpanSoporte from '../components/atomos/Span';
 import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
 import ModalRecuRegeContrasenia from '../components/organismos/Modal';
 import DivLorem from '../components/atomos/divlorem';
-import Image from '../components/atomos/Logo'
+import Image from '../components/atomos/Logo';
+import Header from '../components/organismos/Header/Header';
 
 function Soporte() {
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
@@ -49,6 +50,7 @@ function Soporte() {
   return (
     <div className='container'>
       {/* Resto del contenido */}
+      <Header/>
       <ImagenesConfi />
       <TituloSoporte />
       <div className="row justify-content-center">
