@@ -11,6 +11,7 @@ import Finca from './pages/fincas.jsx';
 import { Olvidopassone } from './pages/OlvidoContrase2.jsx';
 import { Olvidopasstwo } from './pages/OlvidoContrase3.jsx';
 import { Olvidopasstree } from './pages/OlvidoContrase.jsx';
+import Reportes from './pages/Reportes.jsx';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/finca" element={<Finca/>} />
           <Route path="/Soport" element={<Soporte />} />
           <Route path="/dashboard" element={<Dashboardkev />} />
+          <Route path="/nada" element={<Reportes />} />
           
         </Routes>
 
