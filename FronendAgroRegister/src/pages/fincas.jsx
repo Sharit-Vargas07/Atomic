@@ -15,7 +15,7 @@ function Finca() {
     tiempo: "",
   });
 
-  const columns = [ // Define columns aquí
+  const columns = [ 
     {
       name: 'Nombre finca',
       selector: (row) => row.Nombrefinca,
@@ -42,7 +42,7 @@ function Finca() {
     },
   ];
 
-  const data = [ // Define data aquí
+  const data = [
     {
       Nombrefinca: 'Yamboro',
       Direccion: 'Pitalito Huila',
@@ -56,7 +56,6 @@ function Finca() {
         </div>
       ),
     },
-    // Resto de los datos...
   ];
 
   function handleOpenModal(accion) {

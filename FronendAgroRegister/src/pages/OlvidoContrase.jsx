@@ -1,7 +1,7 @@
 import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
-import Logo from '../../src/assets/LogoOrigi.png';
+import Logo from '../assets/LogoOrigi.png';
 
 export const Olvidopasstree = () => {
     const campos = [
@@ -10,11 +10,11 @@ export const Olvidopasstree = () => {
     ];
     
     const formularioStyle = {
-        border: '1px solid #ccc', // Agregando borde
-        borderRadius: '5px', // Ajustando las esquinas del borde
-        padding: '20px', // Ajustando el relleno interno
-        margin: '20px auto', // Centrando el formulario horizontalmente
-        maxWidth: '400px', // Estableciendo el ancho máximo del formulario
+        border: '1px solid #ccc', 
+        borderRadius: '5px', 
+        padding: '20px', 
+        margin: '20px auto', 
+        maxWidth: '400px', 
         display: 'flex',
         justifycontent: 'center'
 

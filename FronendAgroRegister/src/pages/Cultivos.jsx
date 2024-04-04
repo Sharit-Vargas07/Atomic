@@ -49,11 +49,9 @@ function Cultivos() {
     };
 
     const handleDesactivar = (row) => {
-        // Mostrar alerta al desactivar
         alert(`¿Seguro que deseas desactivar el cultivo con fecha de inicio ${row.fecha_inicio}?`);
     };
 
-  // Datos de ejemplo para la tabla
   const data = [
     {
       fecha_inicio: "12/03/2024",

@@ -21,16 +21,14 @@ const FondoInicio = () => {
             </div>
             <style jsx>{`
                 .fondo-inicio {
-                    background-image: url(${v.image9}); // Utiliza la imagen del objeto v
-                    background-size: cover; // Ajusta el tamaño de la imagen para cubrir completamente el contenedor
+                    background-image: url(${v.image9}); 
+                    background-size: cover; 
                     background-position: center;
                     min-height: 100vh;
-                    padding: 20px; /* Agrega un poco de espacio alrededor del contenido */
-                    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
-                    background-attachment: fixed; /* Fija la imagen de fondo */
-                }
+                    padding: 20px; 
+                    overflow-y: hidden; 
+                    background-attachment: fixed; 
 
-                /* Elimina el borde al enfocar los botones */
                 .btn:focus {
                     outline: none;
                     box-shadow: none;

@@ -32,10 +32,10 @@ const TablaFinca = ({ columns, data, handleOpenModal }) => {
           selectAllRowsText: "Todos",
         }}
         expandableRows
-        expandableRowsComponent={false} // Cambiado <></> por false
+        expandableRowsComponent={false} 
       />
     </div>
   );
 };
 
-export { TablaFinca }; // Exporta TablaFinca sin default
+export { TablaFinca }; 

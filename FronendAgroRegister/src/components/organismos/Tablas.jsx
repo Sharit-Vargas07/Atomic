@@ -21,12 +21,12 @@ const DataTableComponent = ({ columns, data, title }) => {
         customStyles={{
           head: {
             style: {
-              backgroundColor: '#4CAF50', // Color de fondo verde para el encabezado
+              backgroundColor: '#4CAF50', 
             },
           },
           headCells: {
             style: {
-              color: '#1B5E20', // Color de texto blanco para los subtítulos
+              color: '#1B5E20', 
             },
           },
         }}

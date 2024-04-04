@@ -11,11 +11,11 @@ export const IniciarSesion = () => {
     ];
     
     const formularioStyle = {
-        border: '1px solid #ccc', // Agregando borde
-        borderRadius: '5px', // Ajustando las esquinas del borde
-        padding: '20px', // Ajustando el relleno interno
-        margin: '20px auto', // Centrando el formulario horizontalmente
-        maxWidth: '400px' // Estableciendo el ancho máximo del formulario
+        border: '1px solid #ccc',
+        borderRadius: '5px', 
+        padding: '20px', 
+        margin: '20px auto', 
+        maxWidth: '400px' 
     };
 
     return (
