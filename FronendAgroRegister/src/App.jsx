@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { IniciarSesion } from './pages/InicioSesion.jsx';
@@ -11,8 +10,8 @@ import Finca from './pages/fincas.jsx';
 import { Olvidopassone } from './pages/OlvidoContrase2.jsx';
 import { Olvidopasstwo } from './pages/OlvidoContrase3.jsx';
 import { Olvidopasstree } from './pages/OlvidoContrase.jsx';
-import Reportes from './pages/Reportes.jsx';
 import Usuario from './pages/Usuarios.jsx';
+import Reportes from './pages/Reportes.jsx';
 
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
           <Route path="/cultivo" element={<Cultivos/>} />
           <Route path="/Soport" element={<Soporte />} />
           <Route path="/dashboard" element={<Dashboardkev />} />
-          <Route path="/nada" element={<Reportes />} />
+          <Route path="/reportes" element={<Reportes />} />
           
         </Routes>
 
