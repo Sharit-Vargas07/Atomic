@@ -29,7 +29,7 @@ export const EditarPerfilusuario = () => {
         fontWeight: 'bold',
         marginBottom: '20px',
         color: 'black',
-        paddingEnd: '50px' // Corregido 'paddingend' a 'paddingEnd'
+        paddingEnd: '50px' 
     };
 
     const formularioinputs = {
@@ -43,12 +43,12 @@ export const EditarPerfilusuario = () => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <form style={formularioStyle}>
                     <div style={{ marginRight: '30px' }}>
-                    <label style={labelStyle}>Perfil Usuario</label>
+                    <label style={labelStyle}>Edicion Usuario</label>
                         <div style={formularioinputs}>
                             <Formulario campos={campos}/>
                         </div>
                         <div style={{ marginTop: '20px' }}>
-                            <Link to='/olvidocontra2'>
+                            <Link to='/Perfilprincipal'>
                                 <Botones children='Guardar' style={{ backgroundColor: 'green', border: 'none', padding: '10px 20px', borderRadius: '5px', color: 'white', fontWeight: 'bold' }} />
                             </Link>
                         </div>

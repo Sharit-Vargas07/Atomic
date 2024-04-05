@@ -12,7 +12,7 @@ function Sidebar() {
             </div>
             <div className="offcanvas-body">
               <ul className="navbar-nav ">
-                <NavItem icon={v.iconoPerfilUsuario} text="Perfil" href="/perfil" />
+                <NavItem icon={v.iconoPerfilUsuario} text="Perfil" href="/Perfilprincipal" />
                 <NavItem icon={v.iconoFinca} text="Finca" href="/finca" />
                 <NavItem icon={v.iconoCultivo} text="Cultivos" href="/cultivo" />
                 <NavItem icon={v.iconoTractor} text="Lotes" href="/lotes" />

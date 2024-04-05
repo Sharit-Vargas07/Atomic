@@ -18,6 +18,7 @@ import Variedad from './pages/Variedad.jsx';
 import Lotes from './pages/Lotes.jsx';
 import Recursos from './pages/Recursos.jsx';
 import Actividad from './pages/Actividades.jsx';
+import { Perfilprincipal } from './pages/Perfil.jsx';
 
 function App() {
 
@@ -43,7 +44,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboardkev />} />
           <Route path="/reportes" element={<Reportes />} />
           <Route path="/programacion" element={<Programacion />} />
-          
+          <Route path="/Perfilprincipal" element={<Perfilprincipal />} />
         </Routes>
 
     </BrowserRouter>
