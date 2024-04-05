@@ -8,8 +8,8 @@ const InputAtom = ({ type, value, onChange, placeholder }) => {
   value={value}
   onChange={onChange}
   placeholder={placeholder}
-  className=" rounded px-2  mb-4 "
-  style={{ borderColor: '#008000' }}
+  className=" rounded px-2  mb-4 border border-success"
+  style={{  width:'350px', height:'40px' }}
  />
  
  );
