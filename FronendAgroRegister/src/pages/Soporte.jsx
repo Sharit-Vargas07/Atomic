@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import Toggle from '../components/atomos/Toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import v from '../../src/styles/variables';
+import v from '../styles/variables';
 import ImagenesConfi from '../components/organismos/ImagenesConfi';
-import TituloSoporte from '../components/atomos/Titulo1';
+import TituloSoporte from '../components/moleculas/TituloSoporte';
 import Icon from '../components/atomos/Iconos';
 import SelectIdioma from '../components/moleculas/SelectIdioma';
 import SpanSoporte from '../components/atomos/Span';
 import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
 import ModalRecuRegeContrasenia from '../components/organismos/Modal';
 import DivLorem from '../components/atomos/divlorem';
-import Header from '../components/organismos/Header/Header';
 import Image from '../components/atomos/Logo';
+import Header from '../components/organismos/Header/Header';
 import Botones from '../components/atomos/Botones'
 
 function Soporte() {
@@ -91,7 +91,6 @@ function Soporte() {
             />
           </div>
 
-          {/* Primer Modal */}
           <ModalRecuRegeContrasenia
             titulo="Recuperación de Contraseña"
             mostrar={primerModalAbierto}
@@ -124,11 +123,11 @@ function Soporte() {
         />
           </ModalRecuRegeContrasenia>
 
-         
+          {/* Resto del contenido */}
         </div>
       </div>
       <div className='bg-custom p-5 mt-5'>
-        <Image src={v.imageLogo} style={{ width: "70px", height: "50px" }} />
+        <Image style={{ width: "70px", height: "50px" }} />
         <SpanSoporte>Lorem ipsum</SpanSoporte>
         <div className='d-flex justify-content-start'>
           <DivLorem />
