@@ -5,18 +5,22 @@ import ModalRecuRegeContrasenia from "../components/organismos/Modal";
 import Header from "../components/organismos/Header/Header";
 import Formulario from '../components/organismos/Formulario.jsx';
 
-function Variedad() {
+function Recursos() {
   const [showRegistroModal, setShowRegistroModal] = useState(false);
   const [showActualizacionModal, setShowActualizacionModal] = useState(false);
   const [registroFormData, setRegistroFormData] = useState({
-    nombreVariedad: "",
-    tipo: "",
-    estado: "",
+    precio: "",
+    nombre_recursos: "",
+    cantidad_medida: "",
+    unidades_medidas: "",
+    extra: "",
   });
   const [actualizacionFormData, setActualizacionFormData] = useState({
-    nombreVariedad: "",
-    tipo: "",
-    estado: "",
+    precio: "",
+    nombre_recursos: "",
+    cantidad_medida: "",
+    unidades_medidas: "",
+    extra: "",
   });
 
   const handleOpenRegistroModal = () => {
@@ -39,9 +43,11 @@ function Variedad() {
     event.preventDefault();
     console.log("Datos de registro:", registroFormData);
     setRegistroFormData({
-      nombreVariedad: "",
-    tipo: "",
-    estado: "",
+        precio: "",
+        nombre_recursos: "",
+        cantidad_medida: "",
+        unidades_medidas: "",
+        extra: "",
     });
     handleCloseRegistroModal();
   };
@@ -50,42 +56,57 @@ function Variedad() {
     event.preventDefault();
     console.log("Datos de actualización:", actualizacionFormData);
     setActualizacionFormData({
-      nombreVariedad: "",
-    tipo: "",
-    estado: "",
+        precio: "",
+        nombre_recursos: "",
+        cantidad_medida: "",
+        unidades_medidas: "",
+        extra: "",
     });
     handleCloseActualizacionModal();
   };
 
   const camposRegistro = [
-    { name: "nombreVariedad", placeholder: "Nombre de la Variedad", type: "text" },
-    { name: "tipo", placeholder: "Tipo de Variedad", type: "text" },
-    { name: "estado", placeholder: "Estado", type: "text" },
+    { name: "precio", placeholder: "Precio", type: "number" },
+    { name: "nombre_recursos", placeholder: "Nombre Recursos", type: "text" },
+    { name: "cantidad_medida", placeholder: "Cantidad Medida", type: "number" },
+    { name: "unidades_medidas", placeholder: "Unidades Medidas", type: "number" },
+    { name: "extra", placeholder: "Extra", type: "text" }
   ];
 
   const camposActualizacion = [
-    { name: "nombreVariedad", placeholder: "Nombre de la Variedad", type: "text" },
-    { name: "tipo", placeholder: "Tipo de Variedad", type: "text" },
-    { name: "estado", placeholder: "Estado", type: "text" },
+    { name: "precio", placeholder: "Precio", type: "number" },
+    { name: "nombre_recursos", placeholder: "Nombre Recursos", type: "text" },
+    { name: "cantidad_medida", placeholder: "Cantidad Medida", type: "number" },
+    { name: "unidades_medidas", placeholder: "Unidades Medidas", type: "number" },
+    { name: "extra", placeholder: "Extra", type: "text" }
   ];
 
   const columns = [
     {
-      name: "Nombre de la Variedad",
-      selector: (row) => row.nombreVariedad,
+      name: "precio",
+      selector: (row) => row.precio,
       sortable: true,
     },
     {
-      name: "Tipo de Variedad",
-      selector: (row) => row.tipo,
+      name: "nombre_recursos",
+      selector: (row) => row.nombre_recursos,
       sortable: true,
     },
     {
-      name: "Estado",
-      selector: (row) => row.estado,
+      name: "cantidad_medida",
+      selector: (row) => row.cantidad_medida,
       sortable: true,
     },
-
+    {
+      name: "unidades_medidas",
+      selector: (row) => row.unidades_medidas,
+      sortable: true,
+    },
+    {
+        name: "extra",
+        selector: (row) => row.extra,
+        sortable: true,
+      },
     {
       name: "Acciones",
       cell: (row) => (
@@ -102,10 +123,20 @@ function Variedad() {
 
   const data = [
     {
-      nombreVariedad: "cebolla",
-      tipo: "organico",
-      estado: "activo",
-    }
+        precio: "1.000",
+        nombre_recursos: "Agua",
+        cantidad_medida: "500",
+        unidades_medidas: "Litros",
+        extra: "Nada",
+    },
+    {
+        precio: "2.000",
+        nombre_recursos: "Fertilizantes",
+        cantidad_medida: "50",
+        unidades_medidas: "Kilos",
+        extra: "NPK",
+    },
+    // Agrega más filas según necesites
   ];
 
   return (
@@ -116,7 +147,7 @@ function Variedad() {
           children="Registrar"
           onClick={() => handleOpenRegistroModal()}
         />
-        <Datatable columns={columns} data={data} title="Variedad" />
+        <Datatable columns={columns} data={data} title="Recursos" />
       </div>
 
       {/* Modal de Registro */}
@@ -147,7 +178,7 @@ function Variedad() {
           onSubmit={handleActualizacionFormSubmit}
           className="form-actualizacion"
         />
-          <Botones
+        <Botones
           children="Registrar"
           onClick={() => handleRegistroFormSubmit()}
         />
@@ -156,4 +187,4 @@ function Variedad() {
   );
 }
 
-export default Variedad;
+export default Recursos;

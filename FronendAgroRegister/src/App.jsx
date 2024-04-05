@@ -14,6 +14,10 @@ import Usuario from './pages/Usuarios.jsx';
 import Reportes from './pages/Reportes.jsx';
 import Programacion from './pages/Programacion.jsx';
 import { EditarPerfilusuario } from './pages/EditarPerfilUsuario.jsx';
+import Variedad from './pages/Variedad.jsx';
+import Lotes from './pages/Lotes.jsx';
+import Recursos from './pages/Recursos.jsx';
+import Actividad from './pages/Actividades.jsx';
 
 function App() {
 
@@ -24,13 +28,17 @@ function App() {
           <Route path="/" element={<InicioF />} />
           <Route path="/iniciosesion" element={<IniciarSesion />} />
           <Route path="/registrarse" element={<Registro />} />
-          <Route path="/editarperfil" element={<EditarPerfilusuario />} />
+          <Route path="/perfil" element={<EditarPerfilusuario />} />
           <Route path="/olvidocontra1" element={<Olvidopassone/>} />
           <Route path="/olvidocontra2" element={<Olvidopasstwo/>} />
           <Route path="/olvidocontra3" element={<Olvidopasstree/>} />
           <Route path="/finca" element={<Finca/>} />
           <Route path="/usuarios" element={<Usuario/>} />
+          <Route path="/variedad" element={<Variedad/>} />
           <Route path="/cultivo" element={<Cultivos/>} />
+          <Route path="/actividad" element={<Actividad/>} />
+          <Route path="/lotes" element={<Lotes/>} />
+          <Route path="/recursos" element={<Recursos/>} />
           <Route path="/Soport" element={<Soporte />} />
           <Route path="/dashboard" element={<Dashboardkev />} />
           <Route path="/reportes" element={<Reportes />} />

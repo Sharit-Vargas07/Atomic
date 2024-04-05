@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Botones from "../components/atomos/Botones";
+import Boton from "../components/atomos/Botones";
 import Header from "../components/organismos/Header/Header";
 
 function Reportes() {
@@ -7,11 +7,11 @@ function Reportes() {
   const [mostrarInformacion, setMostrarInformacion] = useState(false);
 
   return (
-    <div className="container" style={{ marginTop: "150px" }}>
+    <div className="container" style={{ marginTop: "8%" }}>
       <Header/>
       <h2 style={{ display: "inline-block", marginRight: "20px" }}>Reporte Ingresos y Egresos</h2>
       <div style={{ float: "right", marginRight: "20px" }}>
-        <Botones children="Descargar" onClick={() => handleOpenModal("Registrar")} />
+        <Boton children="Descargar" onClick={() => handleOpenModal("Registrar")} />
       </div>
       <hr />
       <div className="row">

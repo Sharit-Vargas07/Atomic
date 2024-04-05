@@ -1,146 +1,170 @@
-import React, { useState, useEffect } from 'react';
-import Toggle from '../components/atomos/Toggle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import v from '../../src/styles/variables';
-import ImagenesConfi from '../components/organismos/ImagenesConfi';
-import TituloSoporte from '../components/atomos/Titulo1';
-import Icon from '../components/atomos/Iconos';
-import SelectIdioma from '../components/moleculas/SelectIdioma';
-import SpanSoporte from '../components/atomos/Span';
-import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
-import ModalRecuRegeContrasenia from '../components/organismos/Modal';
-import DivLorem from '../components/atomos/divlorem';
-import Header from '../components/organismos/Header/Header';
-import Image from '../components/atomos/Logo';
+import React, { useState } from "react";
+import Botones from "../components/atomos/Botones";
+import { Datatable } from "../components/moleculas/Datatable";
+import ModalRecuRegeContrasenia from "../components/organismos/Modal";
+import Header from "../components/organismos/Header/Header";
+import Formulario from '../components/organismos/Formulario.jsx';
 
-function Soporte() {
-  const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
-  const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('es');
-  const [primerModalAbierto, setPrimerModalAbierto] = useState(false);
-  const [segundoModalAbierto, setSegundoModalAbierto] = useState(false);
+function Finca() {
+  const [showRegistroModal, setShowRegistroModal] = useState(false);
+  const [showActualizacionModal, setShowActualizacionModal] = useState(false);
+  const [registroFormData, setRegistroFormData] = useState({
+    nombre_variedad: "",
+    nombre_actividad: "",
+    tipo_recurso: "",
+    tiempo: "",
+  });
+  const [actualizacionFormData, setActualizacionFormData] = useState({
+    nombre_variedad: "",
+    nombre_actividad: "",
+    tipo_recurso: "",
+    tiempo: "",
+  });
 
-  useEffect(() => {
-    abrirPrimerModal(); // Abrir el primer modal cuando se carga la página
-  }, []); // Array vacío para que se ejecute solo una vez al montar el componente
-
-  const toggleNotificaciones = () => {
-    setNotificacionesActivadas(!notificacionesActivadas);
+  const handleOpenRegistroModal = () => {
+    setShowRegistroModal(true);
   };
 
-  const handleIdiomaChange = (event) => {
-    setIdiomaSeleccionado(event.target.value);
+  const handleCloseRegistroModal = () => {
+    setShowRegistroModal(false);
   };
 
-  const abrirPrimerModal = () => {
-    setPrimerModalAbierto(true);
+  const handleOpenActualizacionModal = () => {
+    setShowActualizacionModal(true);
   };
 
-  const cerrarPrimerModal = () => {
-    setPrimerModalAbierto(false);
+  const handleCloseActualizacionModal = () => {
+    setShowActualizacionModal(false);
   };
 
-  const abrirSegundoModal = () => {
-    setSegundoModalAbierto(true);
+  const handleRegistroFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("Datos de registro:", registroFormData);
+    setRegistroFormData({
+      nombres: "",
+      apellidos: "",
+      correo: "",
+      contraseña: "",
+    });
+    handleCloseRegistroModal();
   };
 
-  const cerrarSegundoModal = () => {
-    setSegundoModalAbierto(false);
+  const handleActualizacionFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("Datos de actualización:", actualizacionFormData);
+    setActualizacionFormData({
+      nombres: "",
+      apellidos: "",
+      correo: "",
+      contraseña: "",
+    });
+    handleCloseActualizacionModal();
   };
 
-  const handleSiguienteClick = () => {
-    abrirSegundoModal(); // Abrir el segundo modal al hacer clic en "Siguiente"
-  };
+  const camposRegistro = [
+    { name: "nombres", placeholder: "Nombres", type: "text" },
+    { name: "apellidos", placeholder: "Apellidos", type: "text" },
+    { name: "correo", placeholder: "correo", type: "text" },
+    { name: "contraseña", placeholder: "contraseña", type: "text" }
+  ];
+
+  const camposActualizacion = [
+    { name: "nombres", placeholder: "Nombres", type: "text" },
+    { name: "apellidos", placeholder: "Apellidos", type: "text" },
+    { name: "correo", placeholder: "correo", type: "text" },
+    { name: "contraseña", placeholder: "contraseña", type: "text" }
+  ];
+
+  const columns = [
+    {
+      name: "Nombres",
+      selector: (row) => row.nombres,
+      sortable: true,
+    },
+    {
+      name: "Apellidos",
+      selector: (row) => row.apellidos,
+      sortable: true,
+    },
+    {
+      name: "Correo",
+      selector: (row) => row.correo,
+      sortable: true,
+    },
+    {
+      name: "Contraseña",
+      selector: (row) => row.contraseña,
+      sortable: true,
+    },
+    {
+      name: "Acciones",
+      cell: (row) => (
+        <button
+          className="btn btn-warning p-2 rounded-lg text-sm font-bold"
+          type="button"
+          onClick={() => handleOpenActualizacionModal()}
+        >
+          Editar
+        </button>
+      ),
+    },
+  ];
+
+  const data = [
+    {
+      nombres: "juana",
+      apellidos: "Ortiz",
+      correo: "rodolfo@gmail.com",
+      contraseña: "394435",
+    }
+  ];
 
   return (
-    <div className='container'>
-      {/* Resto del contenido */}
-      <Header/>
-      <ImagenesConfi />
-      <TituloSoporte />
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="text-center my-4">
-            <h2 className="mt-5 text-4xl font-weight-bold mt-4 mb-3">
-              <Icon icon={v.iconoUsuario} className="mr-2" />
-              Juan Pérez
-            </h2>
-          </div>
-
-          <div className="d-flex justify-content-center">
-            <SpanSoporte>Idioma:</SpanSoporte>
-            <SelectIdioma />
-            <SpanSoporte>Notificaciones:</SpanSoporte>
-            <Toggle
-              onChange={toggleNotificaciones}
-              checked={notificacionesActivadas}
-              onColor="#008000"
-              offColor="#BEC3C7"
-            />
-          </div>
-
-          <div className="d-flex justify-content-center mt-5">
-            <DivRecuperarCont
-              onClick={abrirPrimerModal}
-              title="Recuperar Contraseña"
-              icon={v.iconoCandado}
-              paragraph="¿No recuerdas tu contraseña?"
-              linkText="Haz Click Aquí"
-            />
-            <DivRecuperarCont
-              title="Documentación"
-              icon={v.iconoDocumento}
-              paragraph="Descarga nuestra Documentación aquí:"
-              linkText="Haz Click Aquí"
-            />
-          </div>
-
-          {/* Primer Modal */}
-          <ModalRecuRegeContrasenia
-            titulo="Recuperación de Contraseña"
-            mostrar={primerModalAbierto}
-            cerrarModal={cerrarPrimerModal}
-            siguienteVisible={true} // Mostrar el botón "Siguiente"
-            onSiguienteClick={handleSiguienteClick}
-          >
-            <p>Ingrese el código de verificación:</p>
-            <input type="text" className="form-control mb-4" />
-          </ModalRecuRegeContrasenia>
-
-          {/* Segundo Modal */}
-          <ModalRecuRegeContrasenia
-            titulo="Regenerar Contraseña"
-            mostrar={segundoModalAbierto}
-            cerrarModal={cerrarSegundoModal}
-            siguienteVisible={false} // Ocultar el botón "Siguiente"
-          >
-            <p>Escribe la nueva contraseña:</p>
-            <input type="password" className="form-control mb-4" />
-            <p>Confirma tu contraseña:</p>
-            <input type="password" className="form-control mb-4" />
-            {/* <BotonesModal className='text-white bg-success' variant="primary">Generar</BotonesModal> */}
-          </ModalRecuRegeContrasenia>
-
-          {/* Resto del contenido */}
-        </div>
+    <div style={{ marginTop: "8%" }}>
+      <Header />
+      <div className="container mt-5">
+        <Botones
+          children="Registrar"
+          onClick={() => handleOpenRegistroModal()}
+        />
+        <Datatable columns={columns} data={data} title="Usuarios" />
       </div>
-      <div className='bg-custom p-5 mt-5'>
-        <Image src={v.imageLogo} style={{ width: "70px", height: "50px" }} />
-        <SpanSoporte>Lorem ipsum</SpanSoporte>
-        <div className='d-flex justify-content-start'>
-          <DivLorem />
-          <DivLorem />
-          <DivLorem />
-          <DivLorem />
-        </div>
-      </div>
-      <hr />
-      <div className='d-flex justify-content-center align-items-center mb-3'>
-        <p className="m-0">CopyRight</p>
-        <FontAwesomeIcon icon={v.iconoCopyRight} className="mx-2" />
-        <p className="m-0">2024 ADSO 2692929 todos los Derechos Reservados</p>
-      </div>
+
+      {/* Modal de Registro */}
+      <ModalRecuRegeContrasenia
+        mostrar={showRegistroModal}
+        cerrarModal={handleCloseRegistroModal}
+        titulo="Registro"
+      >
+        <Formulario
+          campos={camposRegistro}
+          onSubmit={handleRegistroFormSubmit}
+          className="form-registro"
+        />
+        <Botones
+          children="Registrar"
+          onClick={() => handleRegistroFormSubmit()}
+        />
+      </ModalRecuRegeContrasenia>
+
+      {/* Modal de Actualización */}
+      <ModalRecuRegeContrasenia
+        mostrar={showActualizacionModal}
+        cerrarModal={handleCloseActualizacionModal}
+        titulo="Actualización"
+      >
+        <Formulario
+          campos={camposActualizacion}
+          onSubmit={handleActualizacionFormSubmit}
+          className="form-actualizacion"
+        />
+          <Botones
+          children="Registrar"
+          onClick={() => handleRegistroFormSubmit()}
+        />
+      </ModalRecuRegeContrasenia>
     </div>
   );
 }
 
-export default Soporte;
+export default Finca;

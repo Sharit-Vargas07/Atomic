@@ -5,12 +5,15 @@ import ModalRecuRegeContrasenia from "../components/organismos/Modal";
 import Header from "../components/organismos/Header/Header";
 import Formulario from '../components/organismos/Formulario.jsx';
 
-function Cultivos() {
+function Actividad() {
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [formData, setFormData] = useState({
-    fecha_inicio: "",
-    cantidad_sembrada: "",
+    nombreActividad: "",
+    tiempo: "",
+    valorActividad: "",
+    observaciones: "",
+    tipoCultivo: "",
   });
 
   const handleOpenModal = (title) => {
@@ -26,8 +29,11 @@ function Cultivos() {
     event.preventDefault();
     console.log(formData);
     setFormData({
-      fecha_inicio: "",
-      cantidad_sembrada: "",
+      nombreActividad: "",
+      tiempo: "",
+      valorActividad: "",
+      observaciones: "",
+      tipoCultivo: "",
     });
     handleCloseModal();
   };
@@ -45,9 +51,11 @@ function Cultivos() {
   };
 
   const columns = [
-    { name: "Fecha de inicio", selector: (row) => row.fecha_inicio, sortable: true },
-    { name: "Cantidad Sembrada", selector: (row) => row.cantidad_sembrada, sortable: true },
-    { name: "Estado", selector: (row) => row.estado, sortable: true },
+    { name: "Nombre Actividad", selector: (row) => row.nombreActividad, sortable: true },
+    { name: "Tiempo", selector: (row) => row.tiempo, sortable: true },
+    { name: "Valor Actividad", selector: (row) => row.valorActividad, sortable: true },
+    { name: "Observaciones", selector: (row) => row.observaciones, sortable: true },
+    { name: "Tipo de Cultivo", selector: (row) => row.tipoCultivo, sortable: true },
     { 
       name: "Acciones", 
       cell: (row) => (
@@ -66,20 +74,20 @@ function Cultivos() {
 
   const data = [
     {
-      fecha_inicio: "12/03/2024",
-      cantidad_sembrada: "5",
-      estado: "Activo",
-    },
-    {
-      fecha_inicio: "08/01/2024",
-      cantidad_sembrada: "8",
-      estado: "Activo",
-    },
+      nombreActividad: "Guadañar",
+      tiempo: "2:00",
+      valorActividad: 20000,
+      observaciones: "Bien",
+      tipoCultivo:"Cebolla"
+    }
   ];
 
   const camposRegistro = [
-    { name: "fecha_inicio", placeholder: "Fecha de inicio", type: "text" },
-    { name: "cantidad_sembrada", placeholder: "Cantidad Sembrada", type: "text" },
+    { name: "Nombre Actividad", selector: (row) => row.nombreActividad, sortable: true },
+    { name: "Tiempo", selector: (row) => row.tiempo, sortable: true },
+    { name: "Valor Actividad", selector: (row) => row.valorActividad, sortable: true },
+    { name: "Observaciones", selector: (row) => row.observaciones, sortable: true },
+    { name: "Tipo de Cultivo", selector: (row) => row.tipoCultivo, sortable: true },
   ];
 
   return (
@@ -87,7 +95,7 @@ function Cultivos() {
       <Header />
       <div className="container mt-5">
         <Botones children="Registrar" onClick={() => handleOpenModal("Registrar")} />
-        <Datatable columns={columns} data={data} title="Cultivos" />
+        <Datatable columns={columns} data={data} title="Actividad" />
       </div>
 
       {/* Modal de Cultivos */}
@@ -110,4 +118,4 @@ function Cultivos() {
   );
 }
 
-export default Cultivos;
+export default Actividad;
