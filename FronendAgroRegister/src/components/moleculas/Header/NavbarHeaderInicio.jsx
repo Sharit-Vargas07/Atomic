@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from '../../atomos/Header/Logo'
+import Image from '../../atomos/Logo'
 import './Navbar.css'
 
 function NavbarHeaderInicio() {

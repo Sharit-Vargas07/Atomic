@@ -7,13 +7,13 @@ import Dashboardkev from './pages/Dashboarkev.jsx';
 import InicioF from './pages/Inicio.jsx';
 import Cultivos from './pages/CultivosOfi.jsx';
 import Finca from './pages/fincas.jsx';
-import { Olvidopassone } from './pages/OlvidoContrase2.jsx';
-import { Olvidopasstwo } from './pages/OlvidoContrase3.jsx';
-import { Olvidopasstree } from './pages/OlvidoContrase.jsx';
+import { Olvidopassone } from './pages/OlvidoContrase1.jsx';
+import { Olvidopasstwo } from './pages/OlvidoContrase2.jsx';
+import { Olvidopasstree } from './pages/OlvidoContrase3.jsx';
 import Usuario from './pages/Usuarios.jsx';
 import Reportes from './pages/Reportes.jsx';
 import Programacion from './pages/Programacion.jsx';
-
+import { EditarPerfilusuario } from './pages/EditarPerfilUsuario.jsx';
 
 function App() {
 
@@ -24,6 +24,7 @@ function App() {
           <Route path="/" element={<InicioF />} />
           <Route path="/iniciosesion" element={<IniciarSesion />} />
           <Route path="/registrarse" element={<Registro />} />
+          <Route path="/editarperfil" element={<EditarPerfilusuario />} />
           <Route path="/olvidocontra1" element={<Olvidopassone/>} />
           <Route path="/olvidocontra2" element={<Olvidopasstwo/>} />
           <Route path="/olvidocontra3" element={<Olvidopasstree/>} />

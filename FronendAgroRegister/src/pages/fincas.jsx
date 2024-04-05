@@ -164,6 +164,10 @@ function Finca() {
           onSubmit={handleActualizacionFormSubmit}
           className="form-actualizacion"
         />
+          <Botones
+          children="Registrar"
+          onClick={() => handleRegistroFormSubmit()}
+        />
       </ModalRecuRegeContrasenia>
     </div>
   );

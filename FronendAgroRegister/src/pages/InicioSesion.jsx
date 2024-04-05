@@ -1,8 +1,8 @@
 import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
-import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import HeaderInicio from '../components/organismos/Header/HeaderInicio.jsx';
 
 export const IniciarSesion = () => {
     const campos = [
@@ -19,11 +19,12 @@ export const IniciarSesion = () => {
     };
 
     return (
-        <div className='flex'>
+        <div className='flex' style={{margin:'150px'}}>
+            <HeaderInicio/>
             <div className='flex items-center justify-center'>
                 <form style={formularioStyle}>
-                    <label className="text-xl font-bold flex justify-center items-center p-10">Inicio de Sesion</label>
-                    <div style={{marginTop :'150px'}}>
+                    <label className="text-xl font-bold flex justify-center items-center p-8">Inicio de Sesion</label>
+                    <div style={{marginTop :'100px'}}>
                         <Formulario campos={campos} />
                     </div>
                     <div className="text-xl font-bold justify-center items-center p-10">

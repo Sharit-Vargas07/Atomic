@@ -1,28 +1,32 @@
 import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
-import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import HeaderInicio from '../components/organismos/Header/HeaderInicio.jsx';
 
-export const Olvidopasstwo = () => {
+export const Olvidopasstree = () => {
     const campos = [
-        { name: 'codigo', type: 'number', placeholder: 'Codigo ' },
+        { name: 'password', type: 'password', placeholder: 'Contraseña Nueva' },
+        { name: 'password2', type: 'password', placeholder: 'Confirmación de Contraseña' },
     ];
     
     const formularioStyle = {
         border: '1px solid #ccc', 
-        borderRadius: '5px',
+        borderRadius: '5px', 
         padding: '20px', 
         margin: '20px auto', 
-        maxWidth: '400px'
+        maxWidth: '400px', 
+       
+
     };
 
     return (
-        <div className='flex'>
+        <div className='flex' style={{margin:'150px'}}>
+            <HeaderInicio/>
             <div className='flex items-center justify-center'>
                 <form style={formularioStyle}>
-                    <label className="text-xl font-bold flex justify-center items-center p-10">Codigo de Recuperación</label>
-                    <div style={{marginTop :'150px'}}>
+                    <label className="text-xl font-bold flex justify-center items-center p-10">Cambio de Contraseña</label>
+                    <div style={{marginTop :'100px'}}>
                         <Formulario campos={campos} />
                     </div>
                     <div className='flex flex-col m-5 justify-center items-center'>
@@ -30,12 +34,9 @@ export const Olvidopasstwo = () => {
                         <Botones children='Enviar' />
                         </Link>
                     </div>
-                    <img src={Logo} alt="" className="flex img-fluid mx-auto " style={{ maxWidth: '200px', maxHeight: '200px' }} />
-                <div className='w-2/6 ml-10 p-20'>
-                    <label className="text-xl font-bold justify-center items-center p-10">Por favor ingrese el codigo
- enviado a su correo</label>
-                </div>
+                
                 </form>
+               
                 
             </div>
         </div>

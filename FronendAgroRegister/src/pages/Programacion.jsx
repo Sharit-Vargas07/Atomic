@@ -168,6 +168,10 @@ function Programacion() {
           onSubmit={handleActualizacionFormSubmit}
           className="form-actualizacion"
         />
+        <Botones
+          children="Registrar"
+          onClick={() => handleRegistroFormSubmit()}
+        />
       </ModalRecuRegeContrasenia>
     </div>
   );
