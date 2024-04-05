@@ -12,7 +12,7 @@ function NavbarHeader() {
       </button>
       <a className="navbar-brand text-white fs-4 active" href="/dashboard">Inicio</a>
       <a className="navbar-brand text-white fs-4 active" href="/usuarios">Usuarios</a>
-      <a className="navbar-brand text-white fs-4 active" href="#">Programar</a>
+      <a className="navbar-brand text-white fs-4 active" href="/programacion">Programar</a>
       <Image style={{ width: "70px", height: "50px" }} />
     </div>
   </nav>

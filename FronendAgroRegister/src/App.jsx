@@ -12,6 +12,7 @@ import { Olvidopasstwo } from './pages/OlvidoContrase3.jsx';
 import { Olvidopasstree } from './pages/OlvidoContrase.jsx';
 import Usuario from './pages/Usuarios.jsx';
 import Reportes from './pages/Reportes.jsx';
+import Programacion from './pages/Programacion.jsx';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/Soport" element={<Soporte />} />
           <Route path="/dashboard" element={<Dashboardkev />} />
           <Route path="/reportes" element={<Reportes />} />
+          <Route path="/programacion" element={<Programacion />} />
           
         </Routes>
 

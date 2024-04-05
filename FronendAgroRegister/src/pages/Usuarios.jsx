@@ -1,110 +1,113 @@
 import React, { useState } from "react";
 import Botones from "../components/atomos/Botones";
+import { Datatable } from "../components/moleculas/Datatable";
 import ModalRecuRegeContrasenia from "../components/organismos/Modal";
-import { TablaFinca } from "../components/organismos/TablaFinca";
 import Header from "../components/organismos/Header/Header";
+import Formulario from '../components/organismos/Formulario.jsx';
 
-function Usuario() {
+function Cultivos() {
   const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState(""); 
-
+  const [modalTitle, setModalTitle] = useState("");
   const [formData, setFormData] = useState({
-    nombre_variedad: "",
-    nombre_actividad: "",
-    tipo_recurso: "",
-    tiempo: "",
+    fecha_inicio: "",
+    cantidad_sembrada: "",
   });
 
-  const columns = [ 
-    {
-      name: 'Nombre Usuario',
-      selector: (row) => row.NombreUsuario,
-      sortable: true,
-    },
-    {
-      name: 'Direccion',
-      selector: (row) => row.Direccion,
-      sortable: true,
-    },
-    {
-      name: 'Longitud',
-      selector: (row) => row.Longitud,
-      sortable: true,
-    },
-    {
-      name: 'Latitud',
-      selector: (row) => row.Latitud,
-      sortable: true,
-    },
-    {
-      name: 'Acciones',
-      selector: (row) => row.acciones,
-    },
-  ];
+  const handleOpenModal = (title) => {
+    setShowModal(true);
+    setModalTitle(title);
+  };
 
-  const data = [
-    {
-      NombreUsuario: 'Yamboro',
-      Direccion: 'Pitalito Huila',
-      Longitud: 1346,
-      Latitud: 394435,
-      acciones: (
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+    setFormData({
+      fecha_inicio: "",
+      cantidad_sembrada: "",
+    });
+    handleCloseModal();
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleDesactivarClick = (fechaInicio) => {
+    alert(`¿Quieres desactivar el cultivo con fecha de inicio ${fechaInicio}?`);
+  };
+
+  const columns = [
+    { name: "Fecha de inicio", selector: (row) => row.fecha_inicio, sortable: true },
+    { name: "Cantidad Sembrada", selector: (row) => row.cantidad_sembrada, sortable: true },
+    { name: "Estado", selector: (row) => row.estado, sortable: true },
+    { 
+      name: "Acciones", 
+      cell: (row) => (
         <div>
-          <button className="btn btn-warning p-2 rounded-lg text-sm font-bold" type="button" onClick={() => handleOpenModal("Editar Usuario")}>
-            Editar
+          <button className="btn btn-danger p-2 rounded-lg text-sm font-bold mt-2" type="button" onClick={() => handleDesactivarClick(row.fecha_inicio)}>
+            Desactivar
+          </button>
+          <br /> {/* Agregar un salto de línea para separar los botones */}
+          <button className="btn btn-warning p-2 rounded-lg text-sm font-bold mt-2" type="button" onClick={() => handleOpenModal("Actualizar")}>
+            Actualizar
           </button>
         </div>
       ),
     },
   ];
 
-  function handleOpenModal(accion) {
-    setShowModal(true);
-    setModalTitle(accion);
-  }
+  const data = [
+    {
+      fecha_inicio: "12/03/2024",
+      cantidad_sembrada: "5",
+      estado: "Activo",
+    },
+    {
+      fecha_inicio: "08/01/2024",
+      cantidad_sembrada: "8",
+      estado: "Activo",
+    },
+  ];
 
-  function handleCloseModal() {
-    setShowModal(false);
-  }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log(formData);
-    setFormData({
-      nombre_variedad: "",
-      nombre_actividad: "",
-      tipo_recurso: "",
-      tiempo: "",
-    });
-    handleCloseModal();
-  }
-
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  }
+  const camposRegistro = [
+    { name: "fecha_inicio", placeholder: "Fecha de inicio", type: "text" },
+    { name: "cantidad_sembrada", placeholder: "Cantidad Sembrada", type: "text" },
+  ];
 
   return (
-    <div style={{ marginTop: '8%' }}>
-        <Header/>
+    <div style={{ marginTop: "8%" }}>
+      <Header />
       <div className="container mt-5">
-        <Botones onClick={() => handleOpenModal("Registrar")} children="Registrar" />
-        <TablaFinca columns={columns} data={data} handleOpenModal={handleOpenModal} />
+        <Botones children="Registrar" onClick={() => handleOpenModal("Registrar")} />
+        <Datatable columns={columns} data={data} title="Usuarios" />
       </div>
 
-      <ModalRecuRegeContrasenia 
-        showModal={showModal}
-        handleCloseModal={handleCloseModal}
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        formData={formData}
-        modalTitle={modalTitle}
-      />
+      {/* Modal de Cultivos */}
+      <ModalRecuRegeContrasenia
+        mostrar={showModal}
+        cerrarModal={handleCloseModal}
+        titulo={modalTitle}
+      >
+        <Formulario
+          campos={camposRegistro}
+          onSubmit={handleFormSubmit}
+          className="form-cultivos"
+        />
+        <Botones
+          children="Registrar"
+          onClick={() => handleFormSubmit()}
+        />
+      </ModalRecuRegeContrasenia>
     </div>
   );
 }
 
-export default Usuario;
+export default Cultivos;
