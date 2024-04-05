@@ -3,6 +3,7 @@ import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
 import { Modal } from 'react-bootstrap';
 import Logo from '../../src/assets/LogoOrigi.png';
+import { Link } from 'react-router-dom';
 
 export const Olvidopasstwo = () => {
     const campos = [
@@ -26,7 +27,9 @@ export const Olvidopasstwo = () => {
                         <Formulario campos={campos} />
                     </div>
                     <div className='flex flex-col m-5 justify-center items-center'>
+                        <Link to='/'>
                         <Botones children='Enviar' />
+                        </Link>
                     </div>
                     <img src={Logo} alt="" className="flex img-fluid mx-auto " style={{ maxWidth: '200px', maxHeight: '200px' }} />
                 <div className='w-2/6 ml-10 p-20'>

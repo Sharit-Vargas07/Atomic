@@ -2,6 +2,7 @@ import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
 import Logo from '../assets/LogoOrigi.png';
+import { Link } from 'react-router-dom';
 
 export const Olvidopasstree = () => {
     const campos = [
@@ -29,7 +30,9 @@ export const Olvidopasstree = () => {
                         <Formulario campos={campos} />
                     </div>
                     <div className='flex flex-col m-5 justify-center items-center'>
+                        <Link to='/olvidocontra2'>
                         <Botones children='Enviar' />
+                        </Link>
                     </div>
                     <div className='w-2/6 ml-10 p-20'>
                 <img src={Logo} alt="" className="flex img-fluid mx-auto " style={{ maxWidth: '200px', maxHeight: '200px' }} />
