@@ -2,7 +2,6 @@ import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
 import { Modal } from 'react-bootstrap';
-import Logo from '../../src/assets/LogoOrigi.png';
 import { Link } from 'react-router-dom';
 
 export const IniciarSesion = () => {
@@ -35,11 +34,7 @@ export const IniciarSesion = () => {
                         <Botones children='Enviar' />
                         </Link>
                     </div>
-                    <img src={Logo} alt="" className="flex img-fluid mx-auto " style={{ maxWidth: '200px', maxHeight: '200px' }} />
-                <div className='w-2/6 ml-10 p-20'>
-                    <label className="text-xl font-bold justify-center items-center p-10">Agro Register facilita el 
-control de actividades en fincas</label>
-                </div>
+                   
                 </form>
                 
             </div>

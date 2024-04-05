@@ -6,12 +6,13 @@ import { Registro } from './pages/Registro.jsx';
 import Soporte from '../src/pages/Soporte.jsx'
 import Dashboardkev from './pages/Dashboarkev.jsx';
 import InicioF from './pages/Inicio.jsx';
-import Cultivos from './pages/Cultivos.jsx';
+import Cultivos from './pages/CultivosOfi.jsx';
 import Finca from './pages/fincas.jsx';
 import { Olvidopassone } from './pages/OlvidoContrase2.jsx';
 import { Olvidopasstwo } from './pages/OlvidoContrase3.jsx';
 import { Olvidopasstree } from './pages/OlvidoContrase.jsx';
 import Reportes from './pages/Reportes.jsx';
+import Usuario from './pages/Usuarios.jsx';
 
 
 function App() {
@@ -26,8 +27,9 @@ function App() {
           <Route path="/olvidocontra1" element={<Olvidopassone/>} />
           <Route path="/olvidocontra2" element={<Olvidopasstwo/>} />
           <Route path="/olvidocontra3" element={<Olvidopasstree/>} />
-          <Route path="/cultivos" element={<Cultivos/>} />
           <Route path="/finca" element={<Finca/>} />
+          <Route path="/usuarios" element={<Usuario/>} />
+          <Route path="/cultivo" element={<Cultivos/>} />
           <Route path="/Soport" element={<Soporte />} />
           <Route path="/dashboard" element={<Dashboardkev />} />
           <Route path="/nada" element={<Reportes />} />

@@ -2,7 +2,6 @@ import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
 import { Modal } from 'react-bootstrap';
-import Logo from '../../src/assets/LogoOrigi.png';
 import { Link } from 'react-router-dom';
 export const Olvidopassone = () => {
     const campos = [

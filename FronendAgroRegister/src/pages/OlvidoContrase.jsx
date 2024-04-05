@@ -1,7 +1,6 @@
 import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
-import Logo from '../assets/LogoOrigi.png';
 import { Link } from 'react-router-dom';
 
 export const Olvidopasstree = () => {

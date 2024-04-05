@@ -1,108 +1,170 @@
 import React, { useState } from "react";
 import Botones from "../components/atomos/Botones";
+import { Datatable } from "../components/moleculas/Datatable";
 import ModalRecuRegeContrasenia from "../components/organismos/Modal";
-import { TablaFinca } from "../components/organismos/TablaFinca";
 import Header from "../components/organismos/Header/Header";
+import Formulario from '../components/organismos/Formulario.jsx';
 
 function Finca() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState(""); 
-
-  const [formData, setFormData] = useState({
+  const [showRegistroModal, setShowRegistroModal] = useState(false);
+  const [showActualizacionModal, setShowActualizacionModal] = useState(false);
+  const [registroFormData, setRegistroFormData] = useState({
+    nombre_variedad: "",
+    nombre_actividad: "",
+    tipo_recurso: "",
+    tiempo: "",
+  });
+  const [actualizacionFormData, setActualizacionFormData] = useState({
     nombre_variedad: "",
     nombre_actividad: "",
     tipo_recurso: "",
     tiempo: "",
   });
 
-  const columns = [ 
+  const handleOpenRegistroModal = () => {
+    setShowRegistroModal(true);
+  };
+
+  const handleCloseRegistroModal = () => {
+    setShowRegistroModal(false);
+  };
+
+  const handleOpenActualizacionModal = () => {
+    setShowActualizacionModal(true);
+  };
+
+  const handleCloseActualizacionModal = () => {
+    setShowActualizacionModal(false);
+  };
+
+  const handleRegistroFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("Datos de registro:", registroFormData);
+    setRegistroFormData({
+      nombre_finca: "",
+      direccion: "",
+      longitud: "",
+      latitud: "",
+    });
+    handleCloseRegistroModal();
+  };
+
+  const handleActualizacionFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("Datos de actualización:", actualizacionFormData);
+    setActualizacionFormData({
+      nombre_finca: "",
+      direccion: "",
+      longitud: "",
+      latitud: "",
+    });
+    handleCloseActualizacionModal();
+  };
+
+  const camposRegistro = [
+    { name: "nombre_finca", placeholder: "Nombre de la finca", type: "text" },
+    { name: "direccion", placeholder: "Dirección", type: "text" },
+    { name: "longitud", placeholder: "Longitud", type: "text" },
+    { name: "latitud", placeholder: "Latitud", type: "text" }
+  ];
+
+  const camposActualizacion = [
+    { name: "nombre_finca", placeholder: "Nombre de la finca", type: "text" },
+    { name: "direccion", placeholder: "Dirección", type: "text" },
+    { name: "longitud", placeholder: "Longitud", type: "text" },
+    { name: "latitud", placeholder: "Latitud", type: "text" }
+  ];
+
+  const columns = [
     {
-      name: 'Nombre finca',
+      name: "Nombre finca",
       selector: (row) => row.Nombrefinca,
       sortable: true,
     },
     {
-      name: 'Direccion',
+      name: "Direccion",
       selector: (row) => row.Direccion,
       sortable: true,
     },
     {
-      name: 'Longitud',
+      name: "Longitud",
       selector: (row) => row.Longitud,
       sortable: true,
     },
     {
-      name: 'Latitud',
+      name: "Latitud",
       selector: (row) => row.Latitud,
       sortable: true,
     },
     {
-      name: 'Acciones',
-      selector: (row) => row.acciones,
+      name: "Acciones",
+      cell: (row) => (
+        <button
+          className="btn btn-warning p-2 rounded-lg text-sm font-bold"
+          type="button"
+          onClick={() => handleOpenActualizacionModal()}
+        >
+          Editar
+        </button>
+      ),
     },
   ];
 
   const data = [
     {
-      Nombrefinca: 'Yamboro',
-      Direccion: 'Pitalito Huila',
+      Nombrefinca: "Yamboro",
+      Direccion: "Pitalito Huila",
       Longitud: 1346,
       Latitud: 394435,
-      acciones: (
-        <div>
-          <button className="btn btn-warning p-2 rounded-lg text-sm font-bold" type="button" onClick={() => handleOpenModal("Editar finca")}>
-            Editar
-          </button>
-        </div>
-      ),
+    },
+    {
+      Nombrefinca: "Margaritas",
+      Direccion: "Pitalito Huila",
+      Longitud: 1202,
+      Latitud: 434438,
     },
   ];
 
-  function handleOpenModal(accion) {
-    setShowModal(true);
-    setModalTitle(accion);
-  }
-
-  function handleCloseModal() {
-    setShowModal(false);
-  }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log(formData);
-    setFormData({
-      nombre_variedad: "",
-      nombre_actividad: "",
-      tipo_recurso: "",
-      tiempo: "",
-    });
-    handleCloseModal();
-  }
-
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  }
-
   return (
-    <div style={{ marginTop: '8%' }}>
-        <Header/>
+    <div style={{ marginTop: "8%" }}>
+      <Header />
       <div className="container mt-5">
-        <Botones onClick={() => handleOpenModal("Registrar")} children="Registrar" />
-        <TablaFinca columns={columns} data={data} handleOpenModal={handleOpenModal} />
+        <Botones
+          children="Registrar"
+          onClick={() => handleOpenRegistroModal()}
+        />
+        <Datatable columns={columns} data={data} title="Fincas" />
       </div>
 
-      <ModalRecuRegeContrasenia 
-        showModal={showModal}
-        handleCloseModal={handleCloseModal}
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        formData={formData}
-        modalTitle={modalTitle}
-      />
+      {/* Modal de Registro */}
+      <ModalRecuRegeContrasenia
+        mostrar={showRegistroModal}
+        cerrarModal={handleCloseRegistroModal}
+        titulo="Registro"
+      >
+        <Formulario
+          campos={camposRegistro}
+          onSubmit={handleRegistroFormSubmit}
+          className="form-registro"
+        />
+        <Botones
+          children="Registrar"
+          onClick={() => handleRegistroFormSubmit()}
+        />
+      </ModalRecuRegeContrasenia>
+
+      {/* Modal de Actualización */}
+      <ModalRecuRegeContrasenia
+        mostrar={showActualizacionModal}
+        cerrarModal={handleCloseActualizacionModal}
+        titulo="Actualización"
+      >
+        <Formulario
+          campos={camposActualizacion}
+          onSubmit={handleActualizacionFormSubmit}
+          className="form-actualizacion"
+        />
+      </ModalRecuRegeContrasenia>
     </div>
   );
 }

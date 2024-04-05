@@ -2,7 +2,6 @@ import React from 'react';
 import Formulario from '../components/organismos/Formulario.jsx';
 import Botones from '../components/atomos/Botones.jsx';
 import { Modal } from 'react-bootstrap';
-import Logo from '../../src/assets/LogoOrigi.png';
 
 export const Registro = () => {
     const campos = [
@@ -11,7 +10,6 @@ export const Registro = () => {
         { name: 'correo', type: 'text', placeholder: 'Correo Electronico' },
         { name: 'password', type: 'password', placeholder: 'Contraseña' },
     ];
-    
     const formularioStyle = {
         border: '1px solid #ccc', 
         borderRadius: '5px', 
@@ -19,7 +17,6 @@ export const Registro = () => {
         margin: '20px auto', 
         maxWidth: '400px' 
     };
-
     return (
         <div className='flex'>
             <div className='flex items-center justify-center'>
@@ -31,13 +28,7 @@ export const Registro = () => {
                     <div className='flex flex-col m-5 justify-center items-center'>
                         <Botones children='Enviar' />
                     </div>
-                    <img src={Logo} alt="" className="flex img-fluid mx-auto " style={{ maxWidth: '200px', maxHeight: '200px' }} />
-                <div className='w-2/6 ml-10 p-20'>
-                    <label className="text-xl font-bold justify-center items-center p-10">Agro Register facilita el 
-control de actividades en fincas</label>
-                </div>
                 </form>
-                
             </div>
         </div>
     );
