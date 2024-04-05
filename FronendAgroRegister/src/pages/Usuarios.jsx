@@ -1,113 +1,146 @@
-import React, { useState } from "react";
-import Botones from "../components/atomos/Botones";
-import { Datatable } from "../components/moleculas/Datatable";
-import ModalRecuRegeContrasenia from "../components/organismos/Modal";
-import Header from "../components/organismos/Header/Header";
-import Formulario from '../components/organismos/Formulario.jsx';
+import React, { useState, useEffect } from 'react';
+import Toggle from '../components/atomos/Toggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import v from '../../src/styles/variables';
+import ImagenesConfi from '../components/organismos/ImagenesConfi';
+import TituloSoporte from '../components/atomos/Titulo1';
+import Icon from '../components/atomos/Iconos';
+import SelectIdioma from '../components/moleculas/SelectIdioma';
+import SpanSoporte from '../components/atomos/Span';
+import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
+import ModalRecuRegeContrasenia from '../components/organismos/Modal';
+import DivLorem from '../components/atomos/divlorem';
+import Header from '../components/organismos/Header/Header';
+import Image from '../components/atomos/Logo';
 
-function Cultivos() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
-  const [formData, setFormData] = useState({
-    fecha_inicio: "",
-    cantidad_sembrada: "",
-  });
+function Soporte() {
+  const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
+  const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('es');
+  const [primerModalAbierto, setPrimerModalAbierto] = useState(false);
+  const [segundoModalAbierto, setSegundoModalAbierto] = useState(false);
 
-  const handleOpenModal = (title) => {
-    setShowModal(true);
-    setModalTitle(title);
+  useEffect(() => {
+    abrirPrimerModal(); // Abrir el primer modal cuando se carga la página
+  }, []); // Array vacío para que se ejecute solo una vez al montar el componente
+
+  const toggleNotificaciones = () => {
+    setNotificacionesActivadas(!notificacionesActivadas);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleIdiomaChange = (event) => {
+    setIdiomaSeleccionado(event.target.value);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-    setFormData({
-      fecha_inicio: "",
-      cantidad_sembrada: "",
-    });
-    handleCloseModal();
+  const abrirPrimerModal = () => {
+    setPrimerModalAbierto(true);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const cerrarPrimerModal = () => {
+    setPrimerModalAbierto(false);
   };
 
-  const handleDesactivarClick = (fechaInicio) => {
-    alert(`¿Quieres desactivar el cultivo con fecha de inicio ${fechaInicio}?`);
+  const abrirSegundoModal = () => {
+    setSegundoModalAbierto(true);
   };
 
-  const columns = [
-    { name: "Fecha de inicio", selector: (row) => row.fecha_inicio, sortable: true },
-    { name: "Cantidad Sembrada", selector: (row) => row.cantidad_sembrada, sortable: true },
-    { name: "Estado", selector: (row) => row.estado, sortable: true },
-    { 
-      name: "Acciones", 
-      cell: (row) => (
-        <div>
-          <button className="btn btn-danger p-2 rounded-lg text-sm font-bold mt-2" type="button" onClick={() => handleDesactivarClick(row.fecha_inicio)}>
-            Desactivar
-          </button>
-          <br /> {/* Agregar un salto de línea para separar los botones */}
-          <button className="btn btn-warning p-2 rounded-lg text-sm font-bold mt-2" type="button" onClick={() => handleOpenModal("Actualizar")}>
-            Actualizar
-          </button>
-        </div>
-      ),
-    },
-  ];
+  const cerrarSegundoModal = () => {
+    setSegundoModalAbierto(false);
+  };
 
-  const data = [
-    {
-      fecha_inicio: "12/03/2024",
-      cantidad_sembrada: "5",
-      estado: "Activo",
-    },
-    {
-      fecha_inicio: "08/01/2024",
-      cantidad_sembrada: "8",
-      estado: "Activo",
-    },
-  ];
-
-  const camposRegistro = [
-    { name: "fecha_inicio", placeholder: "Fecha de inicio", type: "text" },
-    { name: "cantidad_sembrada", placeholder: "Cantidad Sembrada", type: "text" },
-  ];
+  const handleSiguienteClick = () => {
+    abrirSegundoModal(); // Abrir el segundo modal al hacer clic en "Siguiente"
+  };
 
   return (
-    <div style={{ marginTop: "8%" }}>
-      <Header />
-      <div className="container mt-5">
-        <Botones children="Registrar" onClick={() => handleOpenModal("Registrar")} />
-        <Datatable columns={columns} data={data} title="Usuarios" />
-      </div>
+    <div className='container'>
+      {/* Resto del contenido */}
+      <Header/>
+      <ImagenesConfi />
+      <TituloSoporte />
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="text-center my-4">
+            <h2 className="mt-5 text-4xl font-weight-bold mt-4 mb-3">
+              <Icon icon={v.iconoUsuario} className="mr-2" />
+              Juan Pérez
+            </h2>
+          </div>
 
-      {/* Modal de Cultivos */}
-      <ModalRecuRegeContrasenia
-        mostrar={showModal}
-        cerrarModal={handleCloseModal}
-        titulo={modalTitle}
-      >
-        <Formulario
-          campos={camposRegistro}
-          onSubmit={handleFormSubmit}
-          className="form-cultivos"
-        />
-        <Botones
-          children="Registrar"
-          onClick={() => handleFormSubmit()}
-        />
-      </ModalRecuRegeContrasenia>
+          <div className="d-flex justify-content-center">
+            <SpanSoporte>Idioma:</SpanSoporte>
+            <SelectIdioma />
+            <SpanSoporte>Notificaciones:</SpanSoporte>
+            <Toggle
+              onChange={toggleNotificaciones}
+              checked={notificacionesActivadas}
+              onColor="#008000"
+              offColor="#BEC3C7"
+            />
+          </div>
+
+          <div className="d-flex justify-content-center mt-5">
+            <DivRecuperarCont
+              onClick={abrirPrimerModal}
+              title="Recuperar Contraseña"
+              icon={v.iconoCandado}
+              paragraph="¿No recuerdas tu contraseña?"
+              linkText="Haz Click Aquí"
+            />
+            <DivRecuperarCont
+              title="Documentación"
+              icon={v.iconoDocumento}
+              paragraph="Descarga nuestra Documentación aquí:"
+              linkText="Haz Click Aquí"
+            />
+          </div>
+
+          {/* Primer Modal */}
+          <ModalRecuRegeContrasenia
+            titulo="Recuperación de Contraseña"
+            mostrar={primerModalAbierto}
+            cerrarModal={cerrarPrimerModal}
+            siguienteVisible={true} // Mostrar el botón "Siguiente"
+            onSiguienteClick={handleSiguienteClick}
+          >
+            <p>Ingrese el código de verificación:</p>
+            <input type="text" className="form-control mb-4" />
+          </ModalRecuRegeContrasenia>
+
+          {/* Segundo Modal */}
+          <ModalRecuRegeContrasenia
+            titulo="Regenerar Contraseña"
+            mostrar={segundoModalAbierto}
+            cerrarModal={cerrarSegundoModal}
+            siguienteVisible={false} // Ocultar el botón "Siguiente"
+          >
+            <p>Escribe la nueva contraseña:</p>
+            <input type="password" className="form-control mb-4" />
+            <p>Confirma tu contraseña:</p>
+            <input type="password" className="form-control mb-4" />
+            {/* <BotonesModal className='text-white bg-success' variant="primary">Generar</BotonesModal> */}
+          </ModalRecuRegeContrasenia>
+
+          {/* Resto del contenido */}
+        </div>
+      </div>
+      <div className='bg-custom p-5 mt-5'>
+        <Image src={v.imageLogo} style={{ width: "70px", height: "50px" }} />
+        <SpanSoporte>Lorem ipsum</SpanSoporte>
+        <div className='d-flex justify-content-start'>
+          <DivLorem />
+          <DivLorem />
+          <DivLorem />
+          <DivLorem />
+        </div>
+      </div>
+      <hr />
+      <div className='d-flex justify-content-center align-items-center mb-3'>
+        <p className="m-0">CopyRight</p>
+        <FontAwesomeIcon icon={v.iconoCopyRight} className="mx-2" />
+        <p className="m-0">2024 ADSO 2692929 todos los Derechos Reservados</p>
+      </div>
     </div>
   );
 }
 
-export default Cultivos;
+export default Soporte;

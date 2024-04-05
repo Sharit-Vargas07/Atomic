@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import Toggle from '../components/atomos/Toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import v from '../styles/variables';
+import v from '../../src/styles/variables';
 import ImagenesConfi from '../components/organismos/ImagenesConfi';
-import TituloSoporte from '../components/moleculas/TituloSoporte';
+import TituloSoporte from '../components/atomos/Titulo1';
 import Icon from '../components/atomos/Iconos';
 import SelectIdioma from '../components/moleculas/SelectIdioma';
 import SpanSoporte from '../components/atomos/Span';
 import DivRecuperarCont from '../components/moleculas/divRecuperarCont';
 import ModalRecuRegeContrasenia from '../components/organismos/Modal';
 import DivLorem from '../components/atomos/divlorem';
-import Image from '../components/atomos/Logo';
 import Header from '../components/organismos/Header/Header';
+import Image from '../components/atomos/Logo';
+import Botones from '../components/atomos/Botones'
 
 function Soporte() {
   const [notificacionesActivadas, setNotificacionesActivadas] = useState(false);
@@ -95,32 +96,39 @@ function Soporte() {
             titulo="Recuperación de Contraseña"
             mostrar={primerModalAbierto}
             cerrarModal={cerrarPrimerModal}
-            siguienteVisible={true} // Mostrar el botón "Siguiente"
+            siguienteVisible={true}
             onSiguienteClick={handleSiguienteClick}
           >
             <p>Ingrese el código de verificación:</p>
             <input type="text" className="form-control mb-4" />
+            <Botones
+          children="Continuar"
+          onClick={() => handleSiguienteClick()}
+        />
           </ModalRecuRegeContrasenia>
 
-          {/* Segundo Modal */}
+
           <ModalRecuRegeContrasenia
             titulo="Regenerar Contraseña"
             mostrar={segundoModalAbierto}
             cerrarModal={cerrarSegundoModal}
-            siguienteVisible={false} // Ocultar el botón "Siguiente"
+            siguienteVisible={false}
           >
             <p>Escribe la nueva contraseña:</p>
             <input type="password" className="form-control mb-4" />
             <p>Confirma tu contraseña:</p>
             <input type="password" className="form-control mb-4" />
-            {/* <BotonesModal className='text-white bg-success' variant="primary">Generar</BotonesModal> */}
+            <Botones
+          children="Enviar"
+          onClick={() => handleSiguienteClick()}
+        />
           </ModalRecuRegeContrasenia>
 
-          {/* Resto del contenido */}
+         
         </div>
       </div>
       <div className='bg-custom p-5 mt-5'>
-        <Image style={{ width: "70px", height: "50px" }} />
+        <Image src={v.imageLogo} style={{ width: "70px", height: "50px" }} />
         <SpanSoporte>Lorem ipsum</SpanSoporte>
         <div className='d-flex justify-content-start'>
           <DivLorem />
